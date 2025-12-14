@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.junf.mapper.VoteMapper">
+    <resultMap id="vote" type="cn.junf.entity.Vote">
+        <id property="id" column="id"/>
+        <result property="userPk" column="user_pk"/>
+        <result property="transactionId" column="transaction_id"/>
+        <result property="trapY" column="trap_y"/>
+        <result property="trapX" column="trap_x"/>
+    </resultMap>
+
+    <select id="selectVoteList" resultMap="vote">
+        select id,
+               user_pk,
+               transaction_id
+        from vote
+        where transaction_id = #{transactionId}
+    </select>
+
+</mapper>
